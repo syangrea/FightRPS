@@ -8,12 +8,15 @@ FightBros Lite is a a browser fighting game built with three.js.  It allows the 
 * Fighting mechanics
 * Multiplayer
 
-## Wireframe
+## Wireframe & File Structure
 ##### Create or Join room page
 ![join-room](https://github.com/syangrea/FightBrosLite/blob/main/images/joinroom.PNG)
 
 ##### Game Canvas
 ![game-canvas](https://github.com/syangrea/FightBrosLite/blob/main/images/fightingcanvas.PNG)
+
+##### File Structure
+![file-structure](https://github.com/syangrea/FightBrosLite/blob/main/images/jsfilestructure.PNG)
 
 
 ## Architecture and Technology
