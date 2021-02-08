@@ -11,11 +11,13 @@ FightBros Lite is a a browser fighting game built with three.js.  It allows the 
 ## Wireframe & File Structure
 ##### Create or Join room page
 ![join-room](https://github.com/syangrea/FightBrosLite/blob/main/images/joinroom.PNG)
-Here you can press create room and generate a random room code. You can pass this code to someone else for them to join.
+
+* Here you can press create room and generate a random room code. You can pass this code to someone else for them to join.
 
 ##### Game Canvas
 ![game-canvas](https://github.com/syangrea/FightBrosLite/blob/main/images/fightingcanvas.PNG)
-This is where the action happens. The canvas in the middle is where the fighting will take place. There will be a health bar for each player on the bottom.
+
+* This is where the action happens. The canvas in the middle is where the fighting will take place. There will be a health bar for each player on the bottom.
 
 ##### File Structure
 ![file-structure](https://github.com/syangrea/FightBrosLite/blob/main/images/jsfilestructure.PNG)
