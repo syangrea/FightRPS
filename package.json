@@ -10,7 +10,7 @@
     "not dead"
   ],
   "scripts": {
-     "start": "webpack-dev-server --config webpack.dev.js",
+    "start": "webpack-dev-server --config webpack.dev.js",
     "webpack:watch": "webpack --watch --config webpack.dev.js",
     "webpack:build": "webpack --config webpack.prod.js  --optimize-minimize"
   },
@@ -35,5 +35,8 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "three": "^0.125.2"
   }
 }
