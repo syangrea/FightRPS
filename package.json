@@ -37,6 +37,8 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+
+    "cannon-es": "^0.16.0",
     "three": "^0.125.2"
   }
 }
