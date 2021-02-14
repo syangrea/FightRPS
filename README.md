@@ -7,7 +7,7 @@ The twist is that spacing and timing matters. You can move right and left and yo
 ## Functionality and MVPs.
 * Character selection - At least 2 characters to choose from.
 * Fighting mechanics - Rock, Papers, Scissors, Right & Left Movement
-* AI & Multiplayer - Can play against a computer or join a room to play online with others.
+* AI - Can play against a computer
 
 ## Wireframe & File Structure
 ##### Create or Join room page
