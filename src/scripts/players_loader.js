@@ -3,6 +3,7 @@ import { Vector3 } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {SkeletonUtils} from 'three/examples/jsm/utils/SkeletonUtils';
 import CharacterController from './character_controller';
+import MoveListener from './move_listener';
 import PlayerListener from './player_listener';
 
 
@@ -96,9 +97,16 @@ export default class PlayerLoader{
             player.character.rotation.y = -Math.PI / 2;
             player.character.rotation.z = 0;
         }
+
         player.controller = new CharacterController(player);
         player.controller.initSetIdle();
         player.listener = new PlayerListener(player);
+        player.moveListener = new MoveListener(player);
+        player.currentRPSMove = null;
+        player.attacked = false;
+        player.dead = false;
+        player.health = 3;
+        player.attacksLeft = 3;
 
         onLoaded();
 

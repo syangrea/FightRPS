@@ -1,11 +1,16 @@
 import * as THREE from 'three';
 import CollisionManager from './collision_manager';
+import MoveLoader from './move_loader';
 import PlayerLoader from './players_loader';
-// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+
 
 
 const CHARACTERS = [
     "capoeira_girl"
+]
+
+const MOVES = [
+    "rock", "paper", "scissor"
 ]
 
 
@@ -14,17 +19,26 @@ export default class FightBrosLite{
     constructor(players, container){
         this.players = players;
         this.container = container;
+        this.currentScreen;
         this.clock;
         this.camera;
         this.scene;
         this.charactersLoaded = false;
         this.collisionManager;
+        this.movesLoaded = false;
+        this.loadedMoves;
+        this.winner = null;
         this.animate = this.animate.bind(this);
         this.onWindowResize = this.onWindowResize.bind(this);
-        this.init();
+        this.createStartScreen();
     }
 
-    init(){
+    initGame(){
+        this.container.removeChild(this.currentScreen);
+        let gameCanvas = document.createElement("div");
+        gameCanvas.setAttribute("id", "game-canvas")
+        this.container.appendChild(gameCanvas);
+        this.currentScreen = gameCanvas;
         //init clock
         this.clock = new THREE.Clock();
         this.initRenderer();
@@ -35,6 +49,12 @@ export default class FightBrosLite{
         playerLoader.load(() => {
             this.charactersLoaded = true;
         })
+
+        const moveLoader = new MoveLoader(MOVES, this.scene, this.players);
+        moveLoader.loadMoves(() => {
+            this.movesLoaded = true;
+        })
+
         this.collisionManager = new CollisionManager(this.players);
         window.addEventListener( 'resize', this.onWindowResize );
         this.animate();
@@ -47,8 +67,8 @@ export default class FightBrosLite{
     	renderer.setSize( window.innerWidth, window.innerHeight );
     	renderer.outputEncoding = THREE.sRGBEncoding;
     	renderer.shadowMap.enabled = true;
-    	renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    	this.container.appendChild( renderer.domElement );
+
+    	this.currentScreen.appendChild( renderer.domElement );
     }
 
     initCamera(){
@@ -66,17 +86,10 @@ export default class FightBrosLite{
 	    this.scene.add( hemiLight );
 
 	    const dirLight = new THREE.DirectionalLight( 0xffffff );
-	    dirLight.position.set( - 3, 10, - 10 );
+	    dirLight.position.set( - 5, 10, - 5 );
 	    dirLight.castShadow = true;
-	    dirLight.shadow.camera.top = 2;
-	    dirLight.shadow.camera.bottom = - 2;
-	    dirLight.shadow.camera.left = - 2;
-	    dirLight.shadow.camera.right = 2;
-	    dirLight.shadow.camera.near = 0.1;
-	    dirLight.shadow.camera.far = 40;
+
 	    this.scene.add( dirLight );
-
-
 
         let stageLoader = new THREE.TextureLoader();
         const groundTexture = stageLoader.load('./images/grass.jpg');
@@ -101,12 +114,17 @@ export default class FightBrosLite{
     }
 
     animate(){
-        requestAnimationFrame(this.animate);
+        let reqId = requestAnimationFrame(this.animate);
         let delta = this.clock.getDelta();
-        if(this.charactersLoaded){
+        if(this.charactersLoaded && this.movesLoaded){
             Object.values(this.players).forEach(player => {
                 // player.mixer.update(delta);
                 // debugger
+                if(player.dead){
+                    this.winner = (player.playerNumber === "player1") ? "player2" : "player1";
+                    window.cancelAnimationFrame(reqId);
+                    this.gameOver();
+                }
                 this.collisionManager.updateCollisions();
                 player.listener.update(delta);
             })
@@ -114,4 +132,43 @@ export default class FightBrosLite{
         this.renderer.render(this.scene, this.camera);
     }
 
+    createStartScreen(){
+        if(this.currentScreen){
+            this.charactersLoaded = false;
+            this.movesLoaded = false;
+            this.winner = null;
+            this.container.removeChild(this.currentScreen);
+        }
+        let startScreen = document.createElement('div');
+        startScreen.setAttribute('id', 'start-screen');
+        this.container.appendChild(startScreen);
+        let startHeader = document.createElement('h1');
+        startHeader.innerText = 'Welcome to 3D Rock Papers Scissors';
+        startScreen.appendChild(startHeader);
+        let startButton = document.createElement('button');
+        startButton.innerText = "Play";
+        startScreen.appendChild(startButton);
+        this.currentScreen = startScreen;
+        startButton.addEventListener("click", (e) => {
+            
+            this.initGame();
+        })  
+    }
+
+    gameOver(){
+        this.container.removeChild(this.currentScreen);
+        let gameOverScreen = document.createElement('div');
+        gameOverScreen.setAttribute("id", "game-over-screen");
+        this.container.appendChild(gameOverScreen);
+        this.currentScreen = gameOverScreen;
+        let gameOverHeader = document.createElement('h1');
+        gameOverHeader.innerText = `${this.winner} has won!`
+        gameOverScreen.appendChild(gameOverHeader);
+        let restartButton = document.createElement('button');
+        restartButton.innerText = "Play Again";
+        gameOverScreen.appendChild(restartButton);
+        restartButton.addEventListener('click', e => {
+            this.createStartScreen();
+        })
+    }
 }

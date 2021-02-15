@@ -30,6 +30,7 @@ export default class PlayerListener {
                 }
         }
         this.player.mixer.update(delta);
+        this.player.moveListener.update();
     }
 
 }

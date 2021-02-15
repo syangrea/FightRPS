@@ -19,7 +19,7 @@ const PLAYERS = {
 
 window.addEventListener("DOMContentLoaded", () => {
 	let container = document.createElement( 'div' );
-    container.setAttribute("id", "fight-canvas");
+    container.setAttribute("id", "root");
     document.body.appendChild(container);
 	new FightBrosLite(PLAYERS, container);
 })
