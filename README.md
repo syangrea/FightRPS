@@ -1,12 +1,12 @@
 # FightBrosLite
 
 ## Background and Overview
-FightBros Lite is a a browser fighting game built with three.js.  It allows the basics of all fighting games: punching, blocking, movement and multiplayer.
+FightBros Lite is a 3D Rock, Papers, Scissors game built with three.js. The twist is that spacing and timing matters.Each player starts with three lives. Each time they lose in rock, papers, scissors, they lose a life. You can move right and left and your move (rock, papers, scissors) only hits a certain distance in front of you. Each player only has three chances to make a move, but resets after either player gets hit, like a round in a regular game of rock papers scissors.  
 
 ## Functionality and MVPs.
 * Character selection - At least 2 characters to choose from.
-* Fighting mechanics - Punching, Blocking, Right & Left Movement, Jump
-* AI & Multiplayer - Can play against a computer or join a room to play online with others.
+* Fighting mechanics - Rock, Papers, Scissors, Right & Left Movement
+* AI - Can play against a computer
 
 ## Wireframe & File Structure
 ##### Create or Join room page

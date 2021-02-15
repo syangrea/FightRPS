@@ -10,28 +10,55 @@ export default class CollisionManager{
     updateCollisions(){
         this.checkWithinRange();
         this.checkAgainstWall();
+        this.checkWithinAttackRange();
         
-        if(this.player1.collided || this.player2.collided){
-            
-            if(this.player1.currentMove._clip.name === "attack1.001" ){
-                
-                if(this.player2.currentMove._clip.name !== "block_idle"){
-                    debugger
-                    this.player2.controller.switchActions("soft_hit");
+        if(this.player1.inAttackRange || this.player2.inAttackRange){
+            if(this.player1.currentRPSMove && this.player2.currentRPSMove){
+                if(this.player1.currentRPSMove === "rock"){
+                    if(this.player2.currentRPSMove === "rock"){
+
+                    }else if(this.player2.currentRPSMove === "paper"){
+                        if(!this.player1.attacked) this.player1.controller.switchActions('hard_hit');
+                    }else if(this.player2.currentRPSMove === "scissor"){
+                        if(!this.player2.attacked) this.player2.controller.switchActions('hard_hit');
+                    }
+                }else if(this.player1.currentRPSMove === "paper"){
+                    if(this.player2.currentRPSMove === "rock"){
+                        if(!this.player2.attacked) this.player2.controller.switchActions('hard_hit');
+                    }else if(this.player2.currentRPSMove === "paper"){
+                       
+                    }else if(this.player2.currentRPSMove === "scissor"){
+                        if(!this.player1.attacked) this.player1.controller.switchActions('hard_hit');
+                    }                    
+                }else if(this.player1.currentRPSMove === "scissor"){
+                    if(this.player2.currentRPSMove === "rock"){
+                        if(!this.player1.attacked) this.player1.controller.switchActions('hard_hit');
+                    }else if(this.player2.currentRPSMove === "paper"){
+                        if(!this.player2.attacked) this.player2.controller.switchActions('hard_hit');
+                    }else if(this.player2.currentRPSMove === "scissor"){
+
+                    }                    
                 }
-            }else if(this.player1.currentMove._clip.name === "attack2.001" ){
-                if(this.player2.currentMove._clip.name !== "block_idle"){
-                    this.player2.controller.switchActions("hard_hit");
+            }else if(this.player1.currentRPSMove){
+                if(this.player1.currentRPSMove === "paper"){
+                    if(Math.abs(this.player1.character.position.x - this.player2.character.position.x) <= 1.8 ){
+                        if(!this.player2.attacked) this.player2.controller.switchActions('hard_hit');
+                    }
+                }else{
+
+                    if(!this.player2.attacked) this.player2.controller.switchActions('hard_hit');
                 }
-            }else if(this.player2.currentMove._clip.name === "attack1.001" ){
-                if(this.player1.currentMove._clip.name !== "block_idle"){
-                    this.player1.controller.switchActions("soft_hit");
-                }
-            }else if(this.player1.currentMove._clip.name === "attack2.001" ){
-                if(this.player1.currentMove._clip.name !== "block_idle"){
-                    this.player1.controller.switchActions("hard_hit");
+            }else if(this.player2.currentRPSMove){
+                if(this.player2.currentRPSMove === "paper"){
+                    if(Math.abs(this.player1.character.position.x - this.player2.character.position.x) <= 1.8 ){
+                        if(!this.player1.attacked) this.player1.controller.switchActions('hard_hit');
+                    }
+                }else{
+
+                    if(!this.player1.attacked) this.player1.controller.switchActions('hard_hit');
                 }
             }
+            
         }
     }
 
@@ -42,6 +69,15 @@ export default class CollisionManager{
         }else{
             this.player1.collided = false;
             this.player2.collided = false;
+        }
+    }
+    checkWithinAttackRange(){
+        if(Math.abs(this.player1.character.position.x - this.player2.character.position.x) <= 2.5 ){
+            this.player1.inAttackRange = true;
+            this.player2.inAttackRange = true;
+        }else{
+            this.player1.inAttackRange = false;
+            this.player2.inAttackRange = false;
         }
     }
 
