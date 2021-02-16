@@ -1,0 +1,47 @@
+#game-header{
+    display: flex;
+    z-index: 10;
+    border: 1px black solid;
+    
+    position: absolute;
+    top: 0;
+    justify-content: space-between;
+    padding-left: 50px;
+    padding-right: 50px;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    .player-ui{
+        .player-name{
+            font-size: 20px;
+            img{
+                box-sizing: border-box;
+                height: 25px;
+                width: 25px;
+            }
+        }
+        .player-health{
+            box-sizing: border-box;
+            height: 30px;
+            img{
+                box-sizing: border-box;
+                height: 25px;
+                width: 25px;
+            }
+        }
+        .attacks-left{
+            box-sizing: border-box;
+            height: 30px;
+            img{
+                box-sizing: border-box;
+                height: 25px;
+                width: 25px;
+            }
+        }
+    
+    }
+}
+
+#root{
+    position: relative;
+}

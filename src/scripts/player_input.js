@@ -49,15 +49,7 @@ export default class PlayerInput{
     			case "Digit5":
     				this.switchActions('idle' )				
     				break;
-				case "Digit1":
-    				this.switchActions('idle' );
-    				break;
-    			case "Digit2":
-    				this.switchActions('idle' );
-    				break;
-				case "Digit3":
-    				this.switchActions('idle');
-    				break;
+
     		}
         
     	})

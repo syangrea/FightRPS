@@ -57,6 +57,8 @@ export default class CharacterController{
             if(e.action === nextAction){
                 that.player.mixer.removeEventListener('loop', finishedAttackAnimation);
                 that.player.attacksLeft -= 1;
+                debugger
+                that.switchActions("idle")
             }
         }
 
@@ -79,6 +81,7 @@ export default class CharacterController{
             if(e.action === nextAction){
                 that.player.mixer.removeEventListener('loop', finishedHitAnimation);
                 that.player.attacked = false;
+                that.player.hitAndRoundFinished = true;
                 that.switchActions("idle");
             }
         }

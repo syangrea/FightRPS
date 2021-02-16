@@ -1,8 +1,9 @@
 import * as THREE from 'three';
+import '../styles/index.scss'
 import CollisionManager from './collision_manager';
 import MoveLoader from './move_loader';
 import PlayerLoader from './players_loader';
-
+import UIManager from './ui_manager';
 
 
 const CHARACTERS = [
@@ -54,7 +55,8 @@ export default class FightBrosLite{
         moveLoader.loadMoves(() => {
             this.movesLoaded = true;
         })
-
+        this.uiManager = new UIManager(this.players, this.currentScreen);
+        this.uiManager.initializeDom();
         this.collisionManager = new CollisionManager(this.players);
         window.addEventListener( 'resize', this.onWindowResize );
         this.animate();
@@ -120,12 +122,21 @@ export default class FightBrosLite{
             Object.values(this.players).forEach(player => {
                 // player.mixer.update(delta);
                 // debugger
-                if(player.dead){
+                if(player.playerNumber === 'player2' && !player.controller.input.startedInterval){
+                    player.controller.input.startActions();
+                }
+                if(player.dead || player.health === 0){
                     this.winner = (player.playerNumber === "player1") ? "player2" : "player1";
                     window.cancelAnimationFrame(reqId);
                     this.gameOver();
+                }else if(player.attacksLeft === 0){
+                    player.health -= 1;
+                    this.restartRound();
+                }else if(player.hitAndRoundFinished){
+                    this.restartRound();
                 }
                 this.collisionManager.updateCollisions();
+                this.uiManager.update();
                 player.listener.update(delta);
             })
         }
@@ -137,7 +148,9 @@ export default class FightBrosLite{
             this.charactersLoaded = false;
             this.movesLoaded = false;
             this.winner = null;
+            this.uiManager.initializeDom();
             this.container.removeChild(this.currentScreen);
+
         }
         let startScreen = document.createElement('div');
         startScreen.setAttribute('id', 'start-screen');
@@ -170,5 +183,14 @@ export default class FightBrosLite{
         restartButton.addEventListener('click', e => {
             this.createStartScreen();
         })
+    }
+
+    restartRound(){
+        Object.values(this.players).forEach(player => {
+            player.attacksLeft = 3;
+            player.hitAndRoundFinished = false;
+            player.character.position.set(...player.initialPosition)
+        })
+
     }
 }
