@@ -59,6 +59,7 @@ export default class FightBrosLite{
         this.uiManager.initializeDom();
         this.collisionManager = new CollisionManager(this.players);
         window.addEventListener( 'resize', this.onWindowResize );
+        this.loadingScreen();
         this.animate();
     }
 
@@ -119,7 +120,10 @@ export default class FightBrosLite{
         let reqId = requestAnimationFrame(this.animate);
         let delta = this.clock.getDelta();
         if(this.charactersLoaded && this.movesLoaded){
-            
+            if(this.loadingScreen) {
+                this.container.removeChild(this.loadingScreen);
+                this.loadingScreen = null;
+            }
             let noAttacksLeft = 0;
             Object.values(this.players).forEach(player => {
                 // player.mixer.update(delta);
@@ -155,6 +159,16 @@ export default class FightBrosLite{
         this.renderer.render(this.scene, this.camera);
     }
 
+    loadingScreen(){
+        this.loadingScreen = document.createElement('div');
+        this.container.appendChild(this.loadingScreen);
+        this.loadingScreen.setAttribute('id', 'loading-screen')
+        let loadingContainer = document.createElement('div');
+        loadingContainer.setAttribute('id','loading-container')
+        this.loadingScreen.appendChild(loadingContainer)
+        loadingContainer.innerText = "loading";
+    }
+
     createStartScreen(){
         if(this.currentScreen){
             this.charactersLoaded = false;
@@ -167,12 +181,15 @@ export default class FightBrosLite{
         let startScreen = document.createElement('div');
         startScreen.setAttribute('id', 'start-screen');
         this.container.appendChild(startScreen);
+        let startContainer = document.createElement('div');
+        startContainer.setAttribute('id', 'start-container');
+        startScreen.appendChild(startContainer);
         let startHeader = document.createElement('h1');
         startHeader.innerText = 'Welcome to 3D Rock Papers Scissors';
-        startScreen.appendChild(startHeader);
+        startContainer.appendChild(startHeader);
         let startButton = document.createElement('button');
         startButton.innerText = "Play";
-        startScreen.appendChild(startButton);
+        startContainer.appendChild(startButton);
         this.currentScreen = startScreen;
         startButton.addEventListener("click", (e) => {
             
@@ -185,13 +202,16 @@ export default class FightBrosLite{
         let gameOverScreen = document.createElement('div');
         gameOverScreen.setAttribute("id", "game-over-screen");
         this.container.appendChild(gameOverScreen);
+        let gameOverContainer = document.createElement('div');
+        gameOverContainer.setAttribute("id", "game-over-container");
+        gameOverScreen.appendChild(gameOverContainer);
         this.currentScreen = gameOverScreen;
         let gameOverHeader = document.createElement('h1');
         gameOverHeader.innerText = `${this.winner} has won!`
-        gameOverScreen.appendChild(gameOverHeader);
+        gameOverContainer.appendChild(gameOverHeader);
         let restartButton = document.createElement('button');
         restartButton.innerText = "Play Again";
-        gameOverScreen.appendChild(restartButton);
+        gameOverContainer.appendChild(restartButton);
         restartButton.addEventListener('click', e => {
             this.createStartScreen();
         })

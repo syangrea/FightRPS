@@ -64,6 +64,147 @@
     }
 }
 
+#game-controls-footer{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    bottom: 0px;
+    margin-bottom: 20px;
+    z-index: 20px;
+    left: 0px;
+    margin-left: 100px;
+    box-sizing: border-box;
+    background-color: #2C2F33;
+    border-radius: 20px;
+    .game-controls-key{
+        box-sizing: border-box;
+        margin-right: 30px;
+        margin-left: 30px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 50px;
+        img{
+            box-sizing: border-box;
+            width: 64px;
+            height: 64px;
+        }
+        h5{
+            font-size: 12px;
+            margin: 0;
+            margin-top: 10px;
+            color: white;
+        }
+    }
+}
+
 #root{
-    position: relative;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  
+    background-image: url('../../images/rock-paper-scissors.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    #start-screen{
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 150px;
+        #start-container{
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            h1{
+                color: white;
+                font-size: 50px;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+            button{
+                color: white;
+                background-color: #7289DA;
+                border-radius: 25px;
+                font-size: 16px;
+                padding: 8px 0 8px 0;
+                width: 100px;
+                font-weight: bold;
+                outline: none;
+                border: none;
+            }
+            button:hover{
+                border: #2C2F33 solid 1px;
+                background-color: rgba(103,123,196,1);
+            }
+            button:focus{
+                outline: none;
+                background-color: #5b7eae;
+                
+            }
+        }
+    }
+    #game-over-screen{
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 150px;
+        #game-over-container{
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            h1{
+                color: white;
+                font-size: 50px;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+            button{
+                color: white;
+                background-color: #7289DA;
+                border-radius: 25px;
+                font-size: 16px;
+                padding: 8px 0 8px 0;
+                width: 100px;
+                font-weight: bold;
+                outline: none;
+                border: none;
+            }
+            button:hover{
+                border: #2C2F33 solid 1px;
+                background-color: rgba(103,123,196,1);
+            }
+            button:focus{
+                outline: none;
+                background-color: #5b7eae;
+                
+            }
+        }
+    }
+    #loading-screen{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        #loading-container{
+            color: white;
+            font-size: 25px;
+
+        }
+    }
 }
