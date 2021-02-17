@@ -12,8 +12,9 @@ export default class AiInput{
 
         let attacks = ["stab", "punch", "block_idle"]
         this.startedInterval = setInterval(() => {
+            // this.switchActions(attacks[Math.floor(Math.random() * 3)])
+            this.switchActions("stab")
 
-            this.switchActions(attacks[Math.floor(Math.random() * 3)])
         }, 5000)
        
     }

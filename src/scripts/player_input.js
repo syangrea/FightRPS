@@ -22,17 +22,10 @@ export default class PlayerInput{
     			case "Digit5":
     				this.switchActions('taunt');
     				break;
-				case "Digit1":
-    				this.switchActions('stab' );
-    				break;
-    			case "Digit2":
-    				this.switchActions('punch' );
-    				break;
-				case "Digit3":
-    				this.switchActions('block_idle');
-    				break;
+
     		}
     	})
+
 
     
     	document.addEventListener('keyup', e => {
@@ -48,6 +41,15 @@ export default class PlayerInput{
     				break;
     			case "Digit5":
     				this.switchActions('idle' )				
+    				break;
+				case "Digit1":
+    				this.switchActions('stab' );
+    				break;
+    			case "Digit2":
+    				this.switchActions('punch' );
+    				break;
+				case "Digit3":
+    				this.switchActions('block_idle');
     				break;
 
     		}

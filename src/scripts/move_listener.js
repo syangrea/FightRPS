@@ -58,7 +58,7 @@ export default class MoveListener{
                 }else if (this.player.playerNumber === "player2"){
                     this.player.moves["rock"].position.set(this.player.character.position.x - 1.5, 1.5, -.5);
                 }
-                debugger
+                
                 
                 this.player.currentRPSMove = "rock";
             }else if(this.currentMove.paper){
@@ -68,7 +68,7 @@ export default class MoveListener{
                 }else if (this.player.playerNumber === "player2"){
                     this.player.moves["paper"].position.set(this.player.character.position.x - 1, 1.5, 0);
                 }     
-                debugger
+                
                 
                 this.player.currentRPSMove = "paper";       
             }else if(this.currentMove.scissor){
@@ -81,7 +81,7 @@ export default class MoveListener{
                 }else if (this.player.playerNumber === "player2"){
                     this.player.moves["scissor"].position.set(this.player.character.position.x - 1, 1.5, 0);
                 }  
-                // debugger
+                
                 
                 this.player.currentRPSMove = "scissor";          
             }else{

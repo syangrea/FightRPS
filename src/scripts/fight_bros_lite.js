@@ -119,26 +119,38 @@ export default class FightBrosLite{
         let reqId = requestAnimationFrame(this.animate);
         let delta = this.clock.getDelta();
         if(this.charactersLoaded && this.movesLoaded){
+            
+            let noAttacksLeft = 0;
             Object.values(this.players).forEach(player => {
                 // player.mixer.update(delta);
                 // debugger
+                
                 if(player.playerNumber === 'player2' && !player.controller.input.startedInterval){
                     player.controller.input.startActions();
                 }
-                if(player.dead || player.health === 0){
+                if(player.attacksLeft === 0 ){
+                    noAttacksLeft += 1;
+                }
+                if(player.dead){
                     this.winner = (player.playerNumber === "player1") ? "player2" : "player1";
                     window.cancelAnimationFrame(reqId);
                     this.gameOver();
-                }else if(player.attacksLeft === 0){
-                    player.health -= 1;
+                }
+                if(noAttacksLeft === 2){
+
                     this.restartRound();
-                }else if(player.hitAndRoundFinished){
+                    
+                }
+                if(player.hitAndRoundFinished){
                     this.restartRound();
                 }
-                this.collisionManager.updateCollisions();
-                this.uiManager.update();
+
+                
                 player.listener.update(delta);
+                
             })
+            this.collisionManager.updateCollisions();
+            this.uiManager.update();
         }
         this.renderer.render(this.scene, this.camera);
     }

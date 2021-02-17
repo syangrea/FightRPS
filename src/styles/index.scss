@@ -1,24 +1,41 @@
 #game-header{
     display: flex;
     z-index: 10;
-    border: 1px black solid;
+
     
     position: absolute;
     top: 0;
     justify-content: space-between;
+    padding-top: 20px;
     padding-left: 50px;
     padding-right: 50px;
     left: 0;
     box-sizing: border-box;
     width: 100%;
     .player-ui{
+        display: flex;
+        .player-pic{
+            box-sizing: border-box;
+            border-radius: 50%;
+            width: 75px;
+            height: 75px;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
         .player-name{
-            font-size: 20px;
-            img{
-                box-sizing: border-box;
-                height: 25px;
-                width: 25px;
-            }
+            font-size: 30px;
+            margin-right: 10px;
+            margin-left: 10px;
+            
+        }
+        .player-stats{
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            margin-left: 10px;
         }
         .player-health{
             box-sizing: border-box;
@@ -27,6 +44,7 @@
                 box-sizing: border-box;
                 height: 25px;
                 width: 25px;
+                margin-right: 5px;
             }
         }
         .attacks-left{
@@ -36,9 +54,13 @@
                 box-sizing: border-box;
                 height: 25px;
                 width: 25px;
+                margin-right: 5px;
             }
         }
     
+    }
+    .player-ui:nth-child(2){
+        flex-direction: row-reverse;
     }
 }
 

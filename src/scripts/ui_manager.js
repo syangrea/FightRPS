@@ -35,14 +35,18 @@ export default class UIManager{
         let playerName = document.createElement('h1');
         playerName.setAttribute('class','player-name');
         playerName.innerText = player.playerNumber;
+        let playerStats = document.createElement('div');
+        playerStats.setAttribute('class','player-stats');
+        
         let playerHealth = document.createElement('div');
         playerHealth.setAttribute('class','player-health');
         let playerAttacksLeft = document.createElement('div');
         playerAttacksLeft.setAttribute('class','attacks-left');
         playerUi.appendChild(playerPic);
         playerUi.appendChild(playerName);
-        playerUi.appendChild(playerHealth);
-        playerUi.appendChild(playerAttacksLeft);
+        playerUi.appendChild(playerStats);
+        playerStats.appendChild(playerHealth);
+        playerStats.appendChild(playerAttacksLeft);
         for(let i = 0; i < 3; i++){
             let health = document.createElement('img');
             health.setAttribute('src','../../images/health.png');
@@ -58,15 +62,18 @@ export default class UIManager{
     update(){
         Object.values(this.players).forEach(player => {
             let playerUi = document.getElementById(`${player.playerNumber}-ui`)
-            debugger
+            
             let playerHealth = playerUi.getElementsByClassName('player-health')[0];
             let playerAttacksLeft = playerUi.getElementsByClassName('attacks-left')[0];
-            debugger
-            if(player.health !== playerHealth.childNodes.length){
+            
+            if(player.health !== playerHealth.childNodes.length && playerHealth.childNodes.length !== 0){
                 playerHealth.removeChild(playerHealth.childNodes[playerHealth.childNodes.length-1]);
             }
             if(player.attacksLeft !== playerAttacksLeft.childNodes.length){
-                if(player.attacksLeft < playerAttacksLeft.childNodes.length){
+                if(player.attacksLeft < 0){
+
+                }else if(player.attacksLeft < playerAttacksLeft.childNodes.length){
+                    
                     playerAttacksLeft.removeChild(playerAttacksLeft.childNodes[playerAttacksLeft.childNodes.length-1]);
                 }else{
                     let attack = document.createElement('img');
