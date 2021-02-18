@@ -15,7 +15,7 @@ export default class AiInput{
             // this.switchActions(attacks[Math.floor(Math.random() * 3)])
             this.switchActions("stab")
 
-        }, 5000)
+        }, 10000)
        
     }
 

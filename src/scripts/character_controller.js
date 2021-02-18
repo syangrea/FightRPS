@@ -1,6 +1,7 @@
 import { MixOperation } from "three";
 import AiInput from "./ai_input";
 import PlayerInput from "./player_input";
+import * as THREE from 'three';
 
 
 export default class CharacterController{
@@ -27,7 +28,7 @@ export default class CharacterController{
     }
 
     executeAction(startAction,nextAction){
-        
+        if(startAction === nextAction) return null;
         nextAction.enabled = true;
         nextAction.setEffectiveTimeScale(1);
         nextAction.setEffectiveWeight(1);
@@ -35,34 +36,70 @@ export default class CharacterController{
         startAction.crossFadeTo(nextAction, .3, true)
         nextAction.play();
         
+        this.nextActionToHappen = null;
+
         this.player.currentMove = nextAction;
+
+        //only switches to idle if no other action done to me like get hit
+        const listenForDone = () => {
+
+
+            this.player.mixer.addEventListener('loop', idleWhenDone);
+            let that = this;
+            function idleWhenDone(e){
+                if(e.action === nextAction){
+                    that.player.mixer.removeEventListener('loop', idleWhenDone)
+                    
+                    if(!that.nextActionToHappen){
+                        if(nextAction._clip.name === "hard_hit"){
+                            that.player.attacked = false;
+                            that.player.hitAndRoundFinished = true;
+                        
+                        }else if(nextAction._clip.name === "punch" || nextAction._clip.name === "stab" || nextAction._clip.name === "block_idle" ){
+
+                            that.player.attacksLeft -= 1;
+
+                        
+                        }else if(nextAction._clip.name === "death"){
+                            that.player.dead = true;
+                            nextAction.paused = true;
+                        }
+                        that.switchActions('idle')
+
+                    }
+                }
+            }
+        }
 
         //what to do when action starts and what the next action should be by default
         if(nextAction._clip.name === "hard_hit"){
-            this.player.attacked = true;
+            // this.player.attacked = true;
             this.player.health -= 1;
-            this.switchActions('idle');
+            listenForDone();
 
         }else if(nextAction._clip.name === "punch" || nextAction._clip.name === "stab" || nextAction._clip.name === "block_idle" ){
-            
-            this.switchActions('idle');
+            nextAction.setLoop()
+            listenForDone();
         }else if(nextAction._clip.name === "death"){
-             this.switchActions('idle');
+             listenForDone();
         }
-        
+ 
     }
 
-    finishStartAction(startAction,nextAction){
-        if(nextAction._clip.name == "hard_hit"){
-            this.player.attacked = true;
-        }
+    finishStartAction(startAction, nextAction){
+        // if(nextAction._clip.name == "hard_hit"){
+        //     this.player.attacked = true;
+        // }
+        
+        this.nextActionToHappen = nextAction
         this.player.mixer.addEventListener('loop', finishAction)
         let that = this;
-        // 
+        // debugger
         //what to do when action start
+
         let finished = false;
         function finishAction(e){
-            
+            // let nextActParam = nextAction;
             if(e.action === startAction){
                 
                 that.player.mixer.removeEventListener('loop',finishAction);
@@ -82,8 +119,8 @@ export default class CharacterController{
                         that.player.dead = true;
                         startAction.paused = true;
                     }
-                    
-                    that.executeAction(startAction,nextAction);
+                    debugger
+                    that.executeAction(startAction,that.nextActionToHappen);
                 }
 
             }
@@ -94,12 +131,14 @@ export default class CharacterController{
         let nextAction = this.player.actions[nextActionName].action;
         let startAction = this.player.currentMove;
         if(startAction === nextAction) return null;
-        
-        if(startAction._clip.name === "punch" 
+        if(nextAction._clip.name == "hard_hit"){
+            this.player.attacked = true;
+        }
+        if((startAction._clip.name === "punch" 
             || startAction._clip.name === "stab" 
             || startAction._clip.name === "block_idle" 
             || startAction._clip.name === "hard_hit" 
-            || startAction._clip.name === "death"){
+            || startAction._clip.name === "death") && nextActionName !== 'idle'){
 
                 //don't allow walk in either direction because when walk is held and attack happens there are errors
                 if(nextActionName === "idle" ||

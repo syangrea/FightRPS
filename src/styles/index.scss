@@ -26,7 +26,8 @@
             font-size: 30px;
             margin-right: 10px;
             margin-left: 10px;
-            
+            text-transform: uppercase;
+            color: white;
         }
         .player-stats{
             box-sizing: border-box;
@@ -70,7 +71,7 @@
     justify-content: center;
     align-items: flex-start;
     bottom: 0px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     z-index: 20px;
     left: 0px;
     margin-left: 100px;
@@ -81,8 +82,8 @@
         box-sizing: border-box;
         margin-right: 30px;
         margin-left: 30px;
-        padding-top: 15px;
-        padding-bottom: 15px;
+        padding-top: 5px;
+        padding-bottom: 5px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -102,6 +103,7 @@
 }
 
 #root{
+    font-family: 'Roboto Condensed', sans-serif;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -149,6 +151,52 @@
                 background-color: #5b7eae;
                 
             }
+        }
+
+
+
+        #links-container{
+            background-color: white;
+            border-radius: 25px;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            box-sizing: border-box;
+            margin-top: 10px;
+            margin-right: 10px;
+            padding: 10px;
+            align-items: center;
+            h1{
+                font-size: 14px;
+                text-transform: uppercase;
+                font-weight: bolder;
+                margin: 0;
+            }
+
+            #links-list{
+                display: flex;
+                box-sizing: border-box;
+                img{
+                    box-sizing: border-box;
+    
+                    height: 30px;
+                    margin-left: 20px;
+                    margin-right: 20px;
+                    transition: .2s;
+                }
+                img:hover{
+                    
+                    transform: scale(1.1);
+                    z-index: 5;
+                    -webkit-transition: transform .5s ease-in-out;
+                    -moz-transition:transform .5s ease-in-out;
+                    -ms-transition:transform .5s ease-in-out;
+                }
+            }
+
+            
         }
     }
     #game-over-screen{
@@ -204,6 +252,37 @@
         #loading-container{
             color: white;
             font-size: 25px;
+
+        }
+    }
+
+    #loading-screen{
+        animation: transitionToLoading 0.75s;
+        transition: .75s;
+    }
+
+
+    @keyframes transitionToLoading {
+        from{
+            opacity: 0;
+            transform: scale(0,0);
+
+        }
+        to{
+            opacity: 1;
+            transform: scale(1,1);
+
+        }
+    }
+    @keyframes transitionToGame {
+        from{
+            opacity: 1;
+            transform: scale(1,1);
+
+        }
+        to{
+            opacity: 0;
+            transform: scale(0,0);
 
         }
     }

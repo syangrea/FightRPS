@@ -65,6 +65,7 @@ export default class UIManager{
         Object.values(this.players).forEach(player => {
             let playerUi = document.getElementById(`${player.playerNumber}-ui`)
             
+            if(!playerUi) return;
             let playerHealth = playerUi.getElementsByClassName('player-health')[0];
             let playerAttacksLeft = playerUi.getElementsByClassName('attacks-left')[0];
             

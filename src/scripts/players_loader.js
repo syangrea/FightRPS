@@ -86,15 +86,15 @@ export default class PlayerLoader{
         this.scene.add(player.character);
         
         if(player.playerNumber === "player1"){
-            player.initialPosition = [-2.5,0,0];
-            player.character.position.set(-2.5,0,0);
+            player.initialPosition = [-2.5,-.5,0];
+            player.character.position.set(-2.5,-.5,0);
             player.character.rotation.x = 0;
             player.character.rotation.y = Math.PI / 2;
             player.character.rotation.z = 0;
             
         }else{
-            player.initialPosition = [2.5,0,0];
-            player.character.position.set(2.5,0,0);
+            player.initialPosition = [2.5,-.5,0];
+            player.character.position.set(2.5,-.5,0);
              player.character.rotation.x = 0;
             player.character.rotation.y = -Math.PI / 2;
             player.character.rotation.z = 0;

@@ -28,7 +28,7 @@ export default class CollisionManager{
                             }
                         }
                     }else if(this.player2.currentRPSMove === "scissor"){
-                        debugger
+                        // debugger
                         if(!this.player2.attacked) {
                             if(this.player2.health === 1){
                                 this.player2.controller.switchActions('death');
@@ -147,15 +147,15 @@ export default class CollisionManager{
     checkAgainstWall(){
         if(this.player1.character.position.x < -3.5){
             this.player1.againstLeftWall = true;
-        }else if(this.player1.character.position > 3.5){
+        }else if(this.player1.character.position.x > 3.5){
             this.player1.againstRightWall = true;
         }else{
             this.player1.againstLeftWall = false;
             this.player1.againstRightWall = false;
         }
-        if(this.player2.character.position < -3.5){
+        if(this.player2.character.position.x < -3.5){
             this.player2.againstLeftWall = true;
-        }else if(this.player2.character.position > 3.5){
+        }else if(this.player2.character.position.x > 3.5){
             this.player2.againstRightWall = true;
         }else{
             this.player2.againstLeftWall = false;
