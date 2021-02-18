@@ -50,12 +50,12 @@ export default class UIManager{
         playerStats.appendChild(playerAttacksLeft);
         for(let i = 0; i < 3; i++){
             let health = document.createElement('img');
-            health.setAttribute('src','../../images/health.png');
+            health.setAttribute('src','https://raw.githubusercontent.com/syangrea/FightRPS/main/images/health.png');
             playerHealth.appendChild(health);
         }
         for(let i = 0; i < 3; i++){
             let attack = document.createElement('img');
-            attack.setAttribute('src','../../images/swords.png');
+            attack.setAttribute('src','https://raw.githubusercontent.com/syangrea/FightRPS/main/images/swords.png');
             playerAttacksLeft.appendChild(attack);
         }
 
