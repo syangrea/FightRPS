@@ -243,7 +243,7 @@ export default class FightBrosLite{
         let linkedInLink = document.createElement('a');
         linkedInLink.setAttribute('href', "https://www.linkedin.com/in/syangrea/");
         let linkedInImg = document.createElement('img');
-        linkedInImg.setAttribute('src', '../../images/linkedIn.png');
+        linkedInImg.setAttribute('src', 'https://raw.githubusercontent.com/syangrea/FightRPS/main/images/linkedIn.png');
         linkedInLink.appendChild(linkedInImg);
         linkedInLink.setAttribute('class', 'link-item');
 
@@ -251,7 +251,7 @@ export default class FightBrosLite{
         let githubLink = document.createElement('a');
         githubLink.setAttribute('href', "https://github.com/syangrea");
         let githubImg = document.createElement('img');
-        githubImg.setAttribute('src', '../../images/github.png');
+        githubImg.setAttribute('src', 'https://raw.githubusercontent.com/syangrea/FightRPS/main/images/github.png');
         githubLink.appendChild(githubImg);
         githubLink.setAttribute('class', 'link-item');
 
@@ -259,7 +259,7 @@ export default class FightBrosLite{
         let angelListLink = document.createElement('a');
         angelListLink.setAttribute('href', "https://angel.co/u/stephen-yang-8")
         let angelListImg = document.createElement('img');
-        angelListImg.setAttribute('src', '../../images/angellist.png');
+        angelListImg.setAttribute('src', 'https://raw.githubusercontent.com/syangrea/FightRPS/main/images/angellist.png');
         angelListLink.appendChild(angelListImg);
         angelListLink.setAttribute('class', 'link-item');
    
