@@ -3,6 +3,8 @@
 ## Background and Overview
 FightBros Lite is a 3D Rock, Papers, Scissors game built with three.js. The twist is that spacing and timing matters.Each player starts with three lives. Each time they lose in rock, papers, scissors, they lose a life. You can move right and left and your move (rock, papers, scissors) only hits a certain distance in front of you. Each player only has three chances to make a move, but resets after either player gets hit, like a round in a regular game of rock papers scissors.  
 
+Live Link: https://syangrea.github.io/FightRPS/
+
 ## Functionality and MVPs.
 * Character selection - At least 2 characters to choose from.
 * Fighting mechanics - Rock, Papers, Scissors, Right & Left Movement

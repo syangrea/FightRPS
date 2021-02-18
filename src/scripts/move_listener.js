@@ -54,34 +54,34 @@ export default class MoveListener{
             if(this.currentMove.rock){
                 
                 if(this.player.playerNumber === "player1"){
-                    this.player.moves["rock"].position.set(this.player.character.position.x + 1.5, 1.5, -.5);
+                    this.player.moves["rock"].position.set(this.player.character.position.x + 1.5, 1, -.5);
                 }else if (this.player.playerNumber === "player2"){
-                    this.player.moves["rock"].position.set(this.player.character.position.x - 1.5, 1.5, -.5);
+                    this.player.moves["rock"].position.set(this.player.character.position.x - 1.5, 1, -.5);
                 }
-                debugger
+                
                 
                 this.player.currentRPSMove = "rock";
             }else if(this.currentMove.paper){
-                if(!this.player.currentRPSMove) this.player.attacksLeft -= 1;
+           
                 if(this.player.playerNumber === "player1"){
-                    this.player.moves["paper"].position.set(this.player.character.position.x + 1, 1.5, 0);
+                    this.player.moves["paper"].position.set(this.player.character.position.x + 1, 1, 0);
                 }else if (this.player.playerNumber === "player2"){
-                    this.player.moves["paper"].position.set(this.player.character.position.x - 1, 1.5, 0);
+                    this.player.moves["paper"].position.set(this.player.character.position.x - 1, 1, 0);
                 }     
-                debugger
+                
                 
                 this.player.currentRPSMove = "paper";       
             }else if(this.currentMove.scissor){
-                if(!this.player.currentRPSMove) this.player.attacksLeft -= 1;
+               
                 if(this.player.playerNumber === "player1"){
                     
-                    this.player.moves["scissor"].position.set(this.player.character.position.x + 1, 1.5, 0);
+                    this.player.moves["scissor"].position.set(this.player.character.position.x + 1, 1, 0);
                     
                     
                 }else if (this.player.playerNumber === "player2"){
-                    this.player.moves["scissor"].position.set(this.player.character.position.x - 1, 1.5, 0);
+                    this.player.moves["scissor"].position.set(this.player.character.position.x - 1, 1, 0);
                 }  
-                debugger
+                
                 
                 this.player.currentRPSMove = "scissor";          
             }else{
