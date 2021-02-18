@@ -32,7 +32,7 @@ export default class UIManager{
         this.canvasUIHeader.appendChild(playerUi);
         let playerPic = document.createElement('img');
         playerPic.setAttribute('class','player-pic');
-        playerPic.setAttribute('src',`../../images/${player.modelName}.PNG`)
+        playerPic.setAttribute('src',`https://raw.githubusercontent.com/syangrea/FightRPS/main/images/${player.modelName}.PNG`)
         let playerName = document.createElement('h1');
         playerName.setAttribute('class','player-name');
         playerName.innerText = player.playerNumber;
@@ -95,7 +95,7 @@ export default class UIManager{
         let leftKeyButton = document.createElement('div');
         leftKeyButton.setAttribute('class', 'game-controls-key');
         let leftKeyImg = document.createElement('img');
-        leftKeyImg.setAttribute('src','../../images/keyboard_key_left.png');
+        leftKeyImg.setAttribute('src','https://raw.githubusercontent.com/syangrea/FightRPS/main/images/keyboard_key_left.png');
         leftKeyButton.appendChild(leftKeyImg);
         let leftKeyName = document.createElement('h5');
         leftKeyName.setAttribute('class','key-name');
@@ -106,7 +106,7 @@ export default class UIManager{
         let rightKeyButton = document.createElement('div');
         rightKeyButton.setAttribute('class', 'game-controls-key');
         let rightKeyImg = document.createElement('img');
-        rightKeyImg.setAttribute('src','../../images/keyboard_key_right.png');
+        rightKeyImg.setAttribute('src','https://raw.githubusercontent.com/syangrea/FightRPS/main/images/keyboard_key_right.png');
         rightKeyButton.appendChild(rightKeyImg);
         let rightKeyName = document.createElement('h5');
         rightKeyName.setAttribute('class','key-name');
@@ -117,7 +117,7 @@ export default class UIManager{
         let oneKeyButton = document.createElement('div');
         oneKeyButton.setAttribute('class', 'game-controls-key');
         let oneKeyImg = document.createElement('img');
-        oneKeyImg.setAttribute('src','../../images/keyboard_key_1.png');
+        oneKeyImg.setAttribute('src','https://raw.githubusercontent.com/syangrea/FightRPS/main/images/keyboard_key_1.png');
         oneKeyButton.appendChild(oneKeyImg);
         let oneKeyName = document.createElement('h5');
         oneKeyName.setAttribute('class','key-name');
@@ -128,7 +128,7 @@ export default class UIManager{
         let twoKeyButton = document.createElement('div');
         twoKeyButton.setAttribute('class', 'game-controls-key');
         let twoKeyImg = document.createElement('img');
-        twoKeyImg.setAttribute('src','../../images/keyboard_key_2.png');
+        twoKeyImg.setAttribute('src','https://raw.githubusercontent.com/syangrea/FightRPS/main/images/keyboard_key_2.png');
         twoKeyButton.appendChild(twoKeyImg);
         let twoKeyName = document.createElement('h5');
         twoKeyName.setAttribute('class','key-name');
@@ -139,7 +139,7 @@ export default class UIManager{
         let threeKeyButton = document.createElement('div');
         threeKeyButton.setAttribute('class', 'game-controls-key');
         let threeKeyImg = document.createElement('img');
-        threeKeyImg.setAttribute('src','../../images/keyboard_key_3.png');
+        threeKeyImg.setAttribute('src','https://raw.githubusercontent.com/syangrea/FightRPS/main/images/keyboard_key_3.png');
         threeKeyButton.appendChild(threeKeyImg);
         let threeKeyName = document.createElement('h5');
         threeKeyName.setAttribute('class','key-name');
@@ -150,7 +150,7 @@ export default class UIManager{
         let fourKeyButton = document.createElement('div');
         fourKeyButton.setAttribute('class', 'game-controls-key');
         let fourKeyImg = document.createElement('img');
-        fourKeyImg.setAttribute('src','../../images/keyboard_key_4.png');
+        fourKeyImg.setAttribute('src','https://raw.githubusercontent.com/syangrea/FightRPS/main/images/keyboard_key_4.png');
         fourKeyButton.appendChild(fourKeyImg);
         let fourKeyName = document.createElement('h5');
         fourKeyName.setAttribute('class','key-name');
@@ -161,7 +161,7 @@ export default class UIManager{
         let fiveKeyButton = document.createElement('div');
         fiveKeyButton.setAttribute('class', 'game-controls-key');
         let fiveKeyImg = document.createElement('img');
-        fiveKeyImg.setAttribute('src','../../images/keyboard_key_5.png');
+        fiveKeyImg.setAttribute('src','https://raw.githubusercontent.com/syangrea/FightRPS/main/images/keyboard_key_5.png');
         fiveKeyButton.appendChild(fiveKeyImg);
         let fiveKeyName = document.createElement('h5');
         fiveKeyName.setAttribute('class','key-name');
