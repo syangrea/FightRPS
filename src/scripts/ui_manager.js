@@ -80,7 +80,7 @@ export default class UIManager{
                     playerAttacksLeft.removeChild(playerAttacksLeft.childNodes[playerAttacksLeft.childNodes.length-1]);
                 }else{
                     let attack = document.createElement('img');
-                    attack.setAttribute('src','../../images/swords.png');
+                    attack.setAttribute('src','https://raw.githubusercontent.com/syangrea/FightRPS/main/images/swords.png');
                     playerAttacksLeft.appendChild(attack);
                 }
             }
