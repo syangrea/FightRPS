@@ -17,7 +17,7 @@ Live Link: https://syangrea.github.io/FightRPS/
 * Here you can create and join a game and visit my social media links: Github, LinkedList, AngelList.
 
 ##### Game Canvas
-![game-canvas](https://github.com/syangrea/FightRPS/blob/main/images/fight_canvas.PNG)
+![game-canvas](https://github.com/syangrea/FightRPS/blob/main/images/gamecanvasgif.gif)
 
 * This is where the action happens. The canvas in the middle is where the fighting will take place. There will be a health bar for each player on the top.
 
