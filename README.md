@@ -21,13 +21,9 @@ Live Link: https://syangrea.github.io/FightRPS/
 
 * This is where the action happens. The canvas in the middle is where the fighting will take place. There will be a health bar for each player on the top.
 
-##### File Structure
-![file-structure](https://github.com/syangrea/FightBrosLite/blob/main/images/jsfilestructure.PNG)
-
 
 ## Architecture and Technology
 * three.js for graphics and rendering
-* websocket for online multiplayer
 * Everything else built with vanilla Javascript
 
 ## Implementation Timeline
