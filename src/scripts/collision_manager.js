@@ -15,7 +15,7 @@ export default class CollisionManager{
 
         if(this.player1.currentRPSMove && this.player2.currentRPSMove){
             // debugger
-            if(this.findDistance() < 3.5){
+            if(this.findDistance() < 4.5){
 
                 if(this.player1.currentRPSMove === "rock"){
                     if(this.player2.currentRPSMove === "rock"){
