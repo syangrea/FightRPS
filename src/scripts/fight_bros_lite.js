@@ -242,6 +242,8 @@ export default class FightBrosLite{
 
         let linkedInLink = document.createElement('a');
         linkedInLink.setAttribute('href', "https://www.linkedin.com/in/syangrea/");
+        linkedInLink.setAttribute('target', "_blank");
+        linkedInLink.setAttribute('rel', "noopener noreferrer");
         let linkedInImg = document.createElement('img');
         linkedInImg.setAttribute('src', 'https://raw.githubusercontent.com/syangrea/FightRPS/main/images/linkedIn.png');
         linkedInLink.appendChild(linkedInImg);
@@ -250,6 +252,8 @@ export default class FightBrosLite{
 
         let githubLink = document.createElement('a');
         githubLink.setAttribute('href', "https://github.com/syangrea");
+        githubLink.setAttribute('target', "_blank");
+        githubLink.setAttribute('rel', "noopener noreferrer");
         let githubImg = document.createElement('img');
         githubImg.setAttribute('src', 'https://raw.githubusercontent.com/syangrea/FightRPS/main/images/github.png');
         githubLink.appendChild(githubImg);
@@ -258,6 +262,8 @@ export default class FightBrosLite{
 
         let angelListLink = document.createElement('a');
         angelListLink.setAttribute('href', "https://angel.co/u/stephen-yang-8")
+        angelListLink.setAttribute('target', "_blank")
+        angelListLink.setAttribute('rel', "noopener noreferrer")
         let angelListImg = document.createElement('img');
         angelListImg.setAttribute('src', 'https://raw.githubusercontent.com/syangrea/FightRPS/main/images/angellist.png');
         angelListLink.appendChild(angelListImg);
