@@ -11,23 +11,19 @@ Live Link: https://syangrea.github.io/FightRPS/
 * AI - Can play against a computer
 
 ## Wireframe & File Structure
-##### Create or Join room page
-![join-room](https://github.com/syangrea/FightBrosLite/blob/main/images/joinroom.PNG)
+##### Join game page
+![join-room](https://github.com/syangrea/FightRPS/blob/main/images/rpshomepage.PNG)
 
-* Here you can press create room and generate a random room code. You can pass this code to someone else for them to join.
+* Here you can create and join a game and visit my social media links: Github, LinkedList, AngelList.
 
 ##### Game Canvas
-![game-canvas](https://github.com/syangrea/FightBrosLite/blob/main/images/fightingcanvas.PNG)
+![game-canvas](https://github.com/syangrea/FightRPS/blob/main/images/gamecanvasgif.gif)
 
-* This is where the action happens. The canvas in the middle is where the fighting will take place. There will be a health bar for each player on the bottom.
-
-##### File Structure
-![file-structure](https://github.com/syangrea/FightBrosLite/blob/main/images/jsfilestructure.PNG)
+* This is where the action happens. The canvas in the middle is where the fighting will take place. There will be a health bar for each player on the top.
 
 
 ## Architecture and Technology
 * three.js for graphics and rendering
-* websocket for online multiplayer
 * Everything else built with vanilla Javascript
 
 ## Implementation Timeline
