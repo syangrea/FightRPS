@@ -29,6 +29,7 @@ export default class FightBrosLite{
         this.movesLoaded = false;
         this.loadedMoves;
         this.winner = null;
+        this.gamePaused = false;
         this.animate = this.animate.bind(this);
         this.onWindowResize = this.onWindowResize.bind(this);
         this.createStartScreen();
@@ -45,8 +46,8 @@ export default class FightBrosLite{
         this.initRenderer();
         this.initCamera();
         this.initScene();
-
-        const playerLoader = new PlayerLoader(CHARACTERS, this.players, this.scene);
+        this.initPauseUI();
+        const playerLoader = new PlayerLoader(CHARACTERS, this.players, this.scene, this.gamePaused);
         playerLoader.load(() => {
             this.charactersLoaded = true;
         })
@@ -117,8 +118,20 @@ export default class FightBrosLite{
 
     }
 
+    initPauseUI(){
+        let pauseButton = document.createElement("button");
+        let pauseImage = document.createElement("img");
+        // pauseImage.setAttribute("src", )
+        // this.currentScreen.appendChild()
+    } 
+
     onWindowResize() {
-    	this.camera.aspect = window.innerWidth / window.innerHeight;
+        if(window.innerWidth > 1000){
+
+            this.camera.aspect = window.innerWidth / window.innerHeight;
+        }else{
+            this.camera.aspect = window.innerHeight / window.innerWidth;
+        }
     	this.camera.updateProjectionMatrix();
     	this.renderer.setSize( window.innerWidth, window.innerHeight );
     }
@@ -126,7 +139,7 @@ export default class FightBrosLite{
     animate(){
         let reqId = requestAnimationFrame(this.animate);
         let delta = this.clock.getDelta();
-        if(this.charactersLoaded && this.movesLoaded){
+        if(this.charactersLoaded && this.movesLoaded && !this.gamePaused){
             if(this.loadingScreen) {
                 this.deleteLoadingScreen();
             }

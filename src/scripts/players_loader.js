@@ -10,13 +10,14 @@ import PlayerListener from './player_listener';
 
 export default class PlayerLoader{
 
-    constructor(characterNames, players, scene){
+    constructor(characterNames, players, scene, gamePaused){
         this.characterNames = characterNames;
         this.players = players;
         this.scene = scene;
         //key: characterName, value: {characterName, model, animations}
         this.loadedCharacters = {};
         this.loadPlayers = this.loadPlayers.bind(this);
+        this.gamePaused = gamePaused;
     }
 
     load(onAllPlayersLoaded){
@@ -100,7 +101,7 @@ export default class PlayerLoader{
             player.character.rotation.z = 0;
         }
 
-        player.controller = new CharacterController(player);
+        player.controller = new CharacterController(player, this.gamePaused);
         player.controller.initSetIdle();
         player.listener = new PlayerListener(player);
         player.moveListener = new MoveListener(player);

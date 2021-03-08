@@ -10,14 +10,26 @@ export default class AiInput{
     startActions(){
         
 
-        let attacks = ["stab", "punch", "block_idle"]
+        let attacks = ["stab", "punch", "block_idle", "walk", "walk_backwards.001"]
         this.startedInterval = setInterval(() => {
-            // this.switchActions(attacks[Math.floor(Math.random() * 3)])
-            this.switchActions("stab")
+            let nextMove = attacks[Math.floor(Math.random() * 5)]
+            if(nextMove === "walk" || nextMove === "walk_backwards.001"){
+                this.switchActions(nextMove);
+                clearInterval(this.startedInterval);
+                setTimeout(()=> {
+                    this.switchActions("idle");
+                    this.startActions();
+                }, 1000)
+            }else{
 
-        }, 10000)
+                this.switchActions(nextMove)
+            }
+            // this.switchActions(attacks[Math.floor(Math.random() * 3)])
+
+        }, 8000)
        
     }
+
 
 
     

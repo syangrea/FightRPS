@@ -5,10 +5,11 @@ import * as THREE from 'three';
 
 
 export default class CharacterController{
-    constructor(player){
+    constructor(player, gamePaused){
         this.player = player;
         this.switchActions = this.switchActions.bind(this);
         this.input;
+        this.gamePaused = gamePaused;
         if(this.player.playerNumber === "player1"){
             this.input = new PlayerInput(this.switchActions);
         }else{
@@ -128,6 +129,7 @@ export default class CharacterController{
     }
 
     switchActions(nextActionName){
+        if(this.gamePaused) return null;
         let nextAction = this.player.actions[nextActionName].action;
         let startAction = this.player.currentMove;
         if(startAction === nextAction) return null;

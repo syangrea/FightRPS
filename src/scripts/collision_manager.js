@@ -20,7 +20,7 @@ export default class CollisionManager{
                 if(this.player1.currentRPSMove === "rock"){
                     if(this.player2.currentRPSMove === "rock"){
                     }else if(this.player2.currentRPSMove === "paper"){
-                        if(!this.player1.attacked) {
+                        if(!this.player1.attacked && !this.player1.hitAndRoundFinished) {
                             if(this.player1.health === 1){
                                 this.player1.controller.switchActions('death');
                             }else{
@@ -29,7 +29,7 @@ export default class CollisionManager{
                         }
                     }else if(this.player2.currentRPSMove === "scissor"){
                         // debugger
-                        if(!this.player2.attacked) {
+                        if(!this.player2.attacked && !this.player2.hitAndRoundFinished) {
                             if(this.player2.health === 1){
                                 this.player2.controller.switchActions('death');
                             }else{
@@ -39,7 +39,7 @@ export default class CollisionManager{
                     }
                 }else if(this.player1.currentRPSMove === "paper"){
                     if(this.player2.currentRPSMove === "rock"){
-                        if(!this.player2.attacked) {
+                        if(!this.player2.attacked && !this.player2.hitAndRoundFinished) {
                             if(this.player2.health === 1){
                                 this.player2.controller.switchActions('death');
                             }else{
@@ -49,7 +49,7 @@ export default class CollisionManager{
                     }else if(this.player2.currentRPSMove === "paper"){
                        
                     }else if(this.player2.currentRPSMove === "scissor"){
-                        if(!this.player1.attacked) {
+                        if(!this.player1.attacked && !this.player1.hitAndRoundFinished) {
                             if(this.player1.health === 1){
                                 this.player1.controller.switchActions('death');
                             }else{
@@ -59,7 +59,7 @@ export default class CollisionManager{
                     }                    
                 }else if(this.player1.currentRPSMove === "scissor"){
                     if(this.player2.currentRPSMove === "rock"){
-                        if(!this.player1.attacked) {
+                        if(!this.player1.attacked && !this.player1.hitAndRoundFinished) {
                             if(this.player1.health === 1){
                                 this.player1.controller.switchActions('death');
                             }else{
@@ -67,7 +67,7 @@ export default class CollisionManager{
                             }
                         }
                     }else if(this.player2.currentRPSMove === "paper"){
-                        if(!this.player2.attacked) {
+                        if(!this.player2.attacked && !this.player2.hitAndRoundFinished) {
                             if(this.player2.health === 1){
                                 this.player2.controller.switchActions('death');
                             }else{
@@ -79,11 +79,11 @@ export default class CollisionManager{
                 }
             }
         }else if(this.player1.currentRPSMove){
-            if(this.findDistance() < 2.5){
+            if(this.findDistance() < 2.8){
 
                 if(this.player1.currentRPSMove === "paper"){
                     if(this.findDistance() <= 1.8 ){
-                        if(!this.player2.attacked){
+                        if(!this.player2.attacked && !this.player2.hitAndRoundFinished){
                             if(this.player2.health === 1){
                                 this.player2.controller.switchActions('death');
                             }else{
@@ -92,7 +92,7 @@ export default class CollisionManager{
                         }
                     }
                 }else{
-                    if(!this.player2.attacked) {
+                    if(!this.player2.attacked && !this.player2.hitAndRoundFinished) {
                             if(this.player2.health === 1){
                                 this.player2.controller.switchActions('death');
                             }else{
@@ -106,7 +106,7 @@ export default class CollisionManager{
 
                 if(this.player2.currentRPSMove === "paper"){
                     if(this.findDistance() <= 1.8 ){
-                        if(!this.player1.attacked) {
+                        if(!this.player1.attacked && !this.player1.hitAndRoundFinished) {
                             if(this.player1.health === 1){
                                 this.player1.controller.switchActions('death');
                             }else{
@@ -115,7 +115,7 @@ export default class CollisionManager{
                         }
                     }
                 }else{
-                    if(!this.player1.attacked) {
+                    if(!this.player1.attacked && !this.player1.hitAndRoundFinished) {
                         if(this.player1.health === 1){
                             this.player1.controller.switchActions('death');
                         }else{
