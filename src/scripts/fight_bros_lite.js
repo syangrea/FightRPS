@@ -119,11 +119,62 @@ export default class FightBrosLite{
     }
 
     initPauseUI(){
+        let pauseDiv = document.createElement("div");
+        this.currentScreen.appendChild(pauseDiv);
+        pauseDiv.setAttribute('id',"pause-container")
+        let buttonHeader = document.createElement("div");
+        pauseDiv.appendChild(buttonHeader);
+        buttonHeader.innerText = "Pause for instructions";
         let pauseButton = document.createElement("button");
         let pauseImage = document.createElement("img");
-        // pauseImage.setAttribute("src", )
-        // this.currentScreen.appendChild()
+        pauseImage.setAttribute("src", "https://raw.githubusercontent.com/syangrea/FightRPS/main/images/pause_button.png")
+        pauseButton.appendChild(pauseImage);
+        pauseDiv.appendChild(pauseButton);
+
+        pauseButton.addEventListener("click", () => {
+            this.gamePaused = true;
+            this.addInstructionsModal();
+        })
     } 
+
+    addInstructionsModal(){
+        let modal = document.createElement("div");
+        this.currentScreen.appendChild(modal);
+        modal.setAttribute("id", "instruction-modal");
+        let childModal = document.createElement("div");
+        modal.appendChild(childModal);
+        childModal.setAttribute("id", "instruction-modal-child");
+        let closeButton = document.createElement("button");
+        closeButton.innerText = "✕";
+        closeButton.setAttribute("id", "instruction-modal-close");
+        childModal.appendChild(closeButton);
+        let header = document.createElement("h1");
+        childModal.appendChild(header);
+        header.innerText = "Instructions";
+        let intro = document.createElement("div");
+        childModal.appendChild(intro);
+        intro.innerText = "This is a 3D version of Rock, Papers, Scissors. The objective is to beat your opponents three times. What makes this 3D is that you can move left and right and the timing of your move (rock,papers,scissors matters).";
+        let instructionsList = document.createElement("ul");
+        childModal.appendChild(instructionsList);
+        let li1 = document.createElement("li");
+        instructionsList.appendChild(li1);
+        li1.innerText = "Each round, players starts with three moves. Playing a rock,papers, or scissors expends a move, but moving left and right doesn't.";
+        let li2 = document.createElement("li");
+        instructionsList.appendChild(li2);
+        li2.innerText = "A round ends and players restart at their starting positions when either both players have no moves left or one player has beat the other.";
+        let li3 = document.createElement("li");
+        instructionsList.appendChild(li3);
+        li3.innerText = "You beat the opponent if you play your move within your move's attack range and they either aren't playing a move at all at the moment or their current move is one that loses to yours. Which moves beats which follows the original Rock, Papers, Scissors game logic.";
+
+        closeButton.addEventListener("click", () => {
+            this.gamePaused = false;
+            this.currentScreen.removeChild(modal);
+        })
+
+
+    }
+
+    
 
     onWindowResize() {
         if(window.innerWidth > 1000){
@@ -246,7 +297,7 @@ export default class FightBrosLite{
         startScreen.appendChild(linksContainer);
 
         let linkHeader = document.createElement('h1');
-        linkHeader.innerText = 'Links';
+        linkHeader.innerText = 'Stephen Yang - Links';
         linksContainer.appendChild(linkHeader);
 
         let linksList = document.createElement('div');
@@ -281,6 +332,7 @@ export default class FightBrosLite{
         angelListImg.setAttribute('src', 'https://raw.githubusercontent.com/syangrea/FightRPS/main/images/angellist.png');
         angelListLink.appendChild(angelListImg);
         angelListLink.setAttribute('class', 'link-item');
+        
    
 
         linksList.appendChild(linkedInLink);
