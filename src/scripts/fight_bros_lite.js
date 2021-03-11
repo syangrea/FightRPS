@@ -333,6 +333,15 @@ export default class FightBrosLite{
         angelListLink.appendChild(angelListImg);
         angelListLink.setAttribute('class', 'link-item');
         
+        let portfolioLink = document.createElement('a');
+        portfolioLink.setAttribute('href', "https://syangrea.github.io/")
+        portfolioLink.setAttribute('target', "_blank")
+        portfolioLink.setAttribute('rel', "noopener noreferrer")
+        let portfolioImg = document.createElement('img');
+        portfolioImg.setAttribute('src', 'https://raw.githubusercontent.com/syangrea/FightRPS/main/images/angellist.png');
+        portfolioLink.appendChild(portfolioImg);
+        portfolioLink.setAttribute('class', 'link-item');
+        
    
 
         linksList.appendChild(linkedInLink);
