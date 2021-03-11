@@ -287,13 +287,19 @@
         z-index: 100;
         background-color: black;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        color: white;
         #loading-container{
-            color: white;
             font-size: 25px;
 
         }
+        
+        ul{
+            width: 50%;
+        }
+
     }
 
     #loading-screen{

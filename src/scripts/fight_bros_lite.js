@@ -233,11 +233,31 @@ export default class FightBrosLite{
         this.loadingScreen = document.createElement('div');
         this.container.appendChild(this.loadingScreen);
         this.loadingScreen.setAttribute('id', 'loading-screen')
+        
+        let header = document.createElement("h1");
+        this.loadingScreen.appendChild(header);
+        header.innerText = "Instructions";
+        let intro = document.createElement("div");
+        this.loadingScreen.appendChild(intro);
+        intro.innerText = "This is a 3D version of Rock, Papers, Scissors. The objective is to beat your opponents three times. What makes this 3D is that you can move left and right and the timing of your move (rock,papers,scissors matters).";
+        let instructionsList = document.createElement("ul");
+        this.loadingScreen.appendChild(instructionsList);
+        let li1 = document.createElement("li");
+        instructionsList.appendChild(li1);
+        li1.innerText = "Each round, players starts with three moves. Playing a rock,papers, or scissors expends a move, but moving left and right doesn't.";
+        let li2 = document.createElement("li");
+        instructionsList.appendChild(li2);
+        li2.innerText = "A round ends and players restart at their starting positions when either both players have no moves left or one player has beat the other.";
+        let li3 = document.createElement("li");
+        instructionsList.appendChild(li3);
+        li3.innerText = "You beat the opponent if you play your move within your move's attack range and they either aren't playing a move at all at the moment or their current move is one that loses to yours. Which moves beats which follows the original Rock, Papers, Scissors game logic.";
+        
         let loadingContainer = document.createElement('div');
         loadingContainer.setAttribute('id','loading-container')
         this.loadingScreen.appendChild(loadingContainer)
         loadingContainer.innerText = "loading";
         this.deletedLoading = false;
+        
         this.loadingDotInterval = setInterval(() => {
             switch(loadingContainer.innerText){
                 case "loading .":
@@ -338,7 +358,7 @@ export default class FightBrosLite{
         portfolioLink.setAttribute('target', "_blank")
         portfolioLink.setAttribute('rel', "noopener noreferrer")
         let portfolioImg = document.createElement('img');
-        portfolioImg.setAttribute('src', 'https://raw.githubusercontent.com/syangrea/FightRPS/main/images/angellist.png');
+        portfolioImg.setAttribute('src', 'https://raw.githubusercontent.com/syangrea/FightRPS/main/images/usericon.png');
         portfolioLink.appendChild(portfolioImg);
         portfolioLink.setAttribute('class', 'link-item');
         
@@ -347,6 +367,7 @@ export default class FightBrosLite{
         linksList.appendChild(linkedInLink);
         linksList.appendChild(githubLink);
         linksList.appendChild(angelListLink);
+        linksList.appendChild(portfolioLink);
 
         startButton.addEventListener("click", (e) => {
             
